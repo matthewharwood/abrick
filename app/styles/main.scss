@@ -18,16 +18,21 @@ body {
   padding: 0;
   margin: 0;
   font-family: $serif;
+  background: url(../images/blur_bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h1 {
   font-family: $sans;
 }
 
-
 .marvel-device {
   margin: 0 auto;
   box-sizing: content-box;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
   
   .screen {
     overflow: hidden;
