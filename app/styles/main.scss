@@ -8,7 +8,30 @@
   vertical-align: middle;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
+}
+
+.marvel-device {
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+.table-center-parent {
+  width: 100%;
+  height: 100%;
+  display: table;
+
+  .table-center-child {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
