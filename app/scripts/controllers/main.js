@@ -24,10 +24,10 @@ angular.module('abrickApp')
     /**
      * Setup Video Elements
      */
-    var videoElement = document.querySelector("video");
-    var audioSelect = document.querySelector("select#audioSource");
-    var videoSelect = document.querySelector("select#videoSource");
-    var startButton = document.querySelector("button#start");
+    var videoElement = document.querySelector('video');
+    var audioSelect = document.querySelector('select#audioSource');
+    var videoSelect = document.querySelector('select#videoSource');
+    // var startButton = document.querySelector('button#start');
 
     /**
      * Canvas for showing captured image
@@ -44,9 +44,9 @@ angular.module('abrickApp')
      * Display available capturing hardware on the device
      */
     function gotSources(sourceInfos) {
-      for (var i = 0; i != sourceInfos.length; ++i) {
+      for (var i = 0; i !== sourceInfos.length; ++i) {
         var sourceInfo = sourceInfos[i];
-        var option = document.createElement("option");
+        var option = document.createElement('option');
         option.value = sourceInfo.id;
         if (sourceInfo.kind === 'audio') {
           option.text = sourceInfo.label || 'microphone ' + (audioSelect.length + 1);
@@ -71,7 +71,7 @@ angular.module('abrickApp')
     }
 
     function errorCallback(error){
-      console.log("navigator.getUserMedia error: ", error);
+      console.log('navigator.getUserMedia error: ', error);
     }
 
     /**
@@ -83,7 +83,7 @@ angular.module('abrickApp')
         window.stream.stop();
       }
       var audioSource = audioSelect.value;
-      var videoSource = videoSelect.value;
+      // var videoSource = videoSelect.value;
 
       var constraints = {
         audio: {
@@ -101,7 +101,7 @@ angular.module('abrickApp')
      */
     function checkDeviceHardwareAndStartCapturing() {
       if (typeof MediaStreamTrack === 'undefined'){
-        alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
+        console.log('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
       } else {
         MediaStreamTrack.getSources(gotSources);
       }
@@ -111,22 +111,20 @@ angular.module('abrickApp')
     start();
 
     var video = document.querySelector('video');
-    var canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
-    var localMediaStream = null;
+    localMediaStream = null;
 
     function snapshot() {
       if (localMediaStream) {
         ctx.drawImage(video, 0, 0);
-        // "image/webp" works in Chrome.
+        // 'image/webp' works in Chrome.
         // Other browsers will fall back to image/png.
         document.querySelector('img').src = canvas.toDataURL('image/webp');
       }
     }
 
-    document.getElementById("capture-photo-btn").onclick = function fun() {
+    document.getElementById('capture-photo-btn').onclick = function fun() {
       snapshot();
-    }
+    };
 
     // Not showing vendor prefixes or code that works cross-browser.
     navigator.getUserMedia({video: true}, function(stream) {
