@@ -17,9 +17,11 @@ angular.module('abrickApp')
 
     // download the data into a local object
 
-    $scope.data = sync.$asObject();
-    console.log($scope.data);
-    // syncObject.$bindTo($scope, 'data');
+    var syncObject = sync.$asObject();
+
+    //binds the scope.data to the database as so: 
+    //$firebase(new Firebase(url).$asObject().$bindTo($scope, 'data'))
+    syncObject.$bindTo($scope, 'data');
 
     /**
      * Setup Video Elements
@@ -133,10 +135,6 @@ angular.module('abrickApp')
     }, errorCallback);
 
 
-    var syncObject = sync.$asObject();
-
-    //binds the scope.data to the database as so: 
-    //$firebase(new Firebase(url).$asObject().$bindTo($scope, 'data'))
-    syncObject.$bindTo($scope, 'data');
+    
 
   });

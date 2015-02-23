@@ -24,6 +24,16 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.screen-container {
+  background: -moz-linear-gradient(-45deg,  rgba(228,245,252,1) 0%, rgba(191,232,249,0.66) 47%, rgba(159,216,239,0.66) 55%, rgba(42,176,237,1) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(228,245,252,1)), color-stop(47%,rgba(191,232,249,0.66)), color-stop(55%,rgba(159,216,239,0.66)), color-stop(100%,rgba(42,176,237,1)));
+  background: -webkit-linear-gradient(-45deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+  background: -o-linear-gradient(-45deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+  background: -ms-linear-gradient(-45deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+  background: linear-gradient(135deg,  rgba(228,245,252,1) 0%,rgba(191,232,249,0.66) 47%,rgba(159,216,239,0.66) 55%,rgba(42,176,237,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=1 );
+
+}
 
 h1 {
   font-family: $sans;
