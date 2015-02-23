@@ -18,14 +18,15 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'firebase'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
 
       $stateProvider
         .state('main', {
-          url: "/",
+          url: '/',
           templateUrl: 'views/main.html',
           controller: 'MainCtrl'
       });
