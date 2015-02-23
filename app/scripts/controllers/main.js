@@ -21,17 +21,20 @@ angular.module('abrickApp')
     console.log($scope.data);
     // syncObject.$bindTo($scope, 'data');
 
-
+    /**
+     * Setup Video Elements
+     */
     var videoElement = document.querySelector("video");
     var audioSelect = document.querySelector("select#audioSource");
     var videoSelect = document.querySelector("select#videoSource");
     var startButton = document.querySelector("button#start");
-
     var videoSourceValues = [];
-
     navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
+    /**
+     * Display available capturing hardware on the device
+     */
     function gotSources(sourceInfos) {
       for (var i = 0; i != sourceInfos.length; ++i) {
         var sourceInfo = sourceInfos[i];
@@ -50,13 +53,9 @@ angular.module('abrickApp')
       }
     }
 
-    if (typeof MediaStreamTrack === 'undefined'){
-      alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
-    } else {
-      MediaStreamTrack.getSources(gotSources);
-    }
-
-
+    /**
+     * Start streaming video data when ready
+     */
     function successCallback(stream) {
       window.stream = stream; // make stream available to console
       videoElement.src = window.URL.createObjectURL(stream);
@@ -67,6 +66,9 @@ angular.module('abrickApp')
       console.log("navigator.getUserMedia error: ", error);
     }
 
+    /**
+     * Start video with selected input constraints
+     */
     function start(){
       if (!!window.stream) {
         videoElement.src = null;
@@ -86,11 +88,19 @@ angular.module('abrickApp')
       navigator.getUserMedia(constraints, successCallback, errorCallback);
     }
 
-    audioSelect.onchange = start;
-    videoSelect.onchange = start;
+    /**
+     * Start video capturing if hardware supports it
+     */
+    function checkDeviceHardwareAndStartCapturing() {
+      if (typeof MediaStreamTrack === 'undefined'){
+        alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
+      } else {
+        MediaStreamTrack.getSources(gotSources);
+        start();
+      }
+    }
 
-    start();
-
+    checkDeviceHardwareAndStartCapturing();
   
 
 
