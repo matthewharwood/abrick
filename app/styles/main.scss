@@ -1,6 +1,7 @@
 // bower:scss
 // endbower
-
+$serif: 'Noto Serif', serif;
+$sans: 'Noto Sans', sans-serif;
 * { 
   background-repeat: no-repeat;
   box-sizing: border-box;
@@ -16,11 +17,20 @@ html, body {
 body {
   padding: 0;
   margin: 0;
+  font-family: $serif;
 }
+h1 {
+  font-family: $sans;
+}
+
 
 .marvel-device {
   margin: 0 auto;
   box-sizing: content-box;
+  
+  .screen {
+    overflow: hidden;
+  }
 }
 
 .table-center-parent {
@@ -35,3 +45,4 @@ body {
     vertical-align: middle;
   }
 }
+
