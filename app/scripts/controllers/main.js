@@ -17,6 +17,6 @@ angular.module('abrickApp')
 
     // download the data into a local object
     $scope.data = sync.$asObject();
-
-    syncObject.$bindTo($scope, 'data');
+    console.log($scope.data);
+    // syncObject.$bindTo($scope, 'data');
   });
