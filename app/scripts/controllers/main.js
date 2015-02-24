@@ -22,7 +22,21 @@ angular.module('abrickApp')
 
       }
     };
+    var addNewObject = function(val){
+      console.log(val);
+    };
+    if (annyang) {
+      // Let's define a command.
+      var commands = {
+        'name me *val': function(val) { $scope.myName = 'my name is '+ val; $scope.$apply(); }
+      };
 
+      // Add our commands to annyang
+      annyang.addCommands(commands);
+
+      // Start listening.
+      annyang.start();
+    }
     //inits the changes it on state change
     //event, toState, toParams, fromState, fromParams
     $scope.$on('$stateChangeSuccess', function(){
