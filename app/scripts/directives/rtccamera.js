@@ -51,7 +51,7 @@ angular.module('abrickApp')
 
         //binds the scope.data to the database as so:
         //$firebase(new Firebase(url).$asObject().$bindTo($scope, 'data'))
-        syncObject.$bindTo(scope, 'capturedImage');
+        syncObject.$bindTo(scope, 'data');
         scope.data = {
           capturedImage: undefined
         };
