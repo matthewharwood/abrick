@@ -33,13 +33,13 @@ angular.module('abrickApp')
           },
           function (pLocalMediaStream) {
             Webcam.params.setLocalStream(pLocalMediaStream);
-            var lVideo = document.querySelector("#background-video");
+            var lVideo = document.querySelector('#background-video');
             lVideo.autoplay = true;
             lVideo.src = URL.createObjectURL(pLocalMediaStream);
           }, Webcam.errorHandler);
 
       },
-      link: function (scope, element) {
+      link: function (scope) {
 
         var ref = new Firebase('https://abrick.firebaseio.com/');
 
@@ -62,7 +62,7 @@ angular.module('abrickApp')
 
           var canvas = document.getElementById('capture-frame');
           var ctx = canvas.getContext('2d');
-          var video = document.querySelector("#background-video");
+          var video = document.querySelector('#background-video');
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
 

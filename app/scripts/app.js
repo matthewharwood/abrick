@@ -28,18 +28,21 @@ angular
         .state('main', {
           url: '/',
           templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
+          // onEnter: function(UI){
+          //   UI.setButtonState = 'main'
+          // }
       });
 
       $stateProvider
         .state('main.add', {
           url: 'add',
-          onEnter: function(){
+          // onEnter: function(UI){
+          //   UI.setButtonState = 'main.add'
+          // },
+          // onLeave: function(){
             
-          },
-          onLeave: function(){
-            
-          }
+          // }
       });
 
   });

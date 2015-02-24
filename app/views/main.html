@@ -20,9 +20,13 @@
   </header>
 </section>
 
-<section class="main-content">
+<section class="main-content" ng-class="{'main-btn-styles': stateName === 'main', 'main-add-btn-styles': stateName === 'main.add'}">
   <div class="action-btn-parent">
-    <button ng-click="takePic()" ui-sref="main.add" class="action-btn-child">+</button>
+    <button ng-click="takePic()" 
+            ui-sref="main.add" 
+            class="action-btn-child" 
+            ng-class="{'icons microphone': stateName === 'main.add'}">+</button>
+    <input type="text" ng-model='data.objectName' hidden/>
   </div>
 </section>
 

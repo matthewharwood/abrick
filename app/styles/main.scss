@@ -193,24 +193,16 @@ h1, h2, h3 {
 
 //SECTION: main-content
 //
-.main-content {
-
-  width: 200px;
-  margin: 0 auto;
-  height: 200px;
-}
-
 .action-btn-parent {
   width: 100%;
-  height: 200px;
+ 
   border: 3px solid #fff;
-  border-radius: 300px;
   text-align: center;
   margin: 0 auto;
   cursor: pointer;
 }
-
-.action-btn-child{
+.action-btn-child {
+  transition: all .35s ease-in-out;
   @extend .unstyled-btn;
   font-size: 96px;
   font-weight: 700;
@@ -221,6 +213,32 @@ h1, h2, h3 {
   font-family: sans-serif;
   cursor: pointer;
 }
+.main-content {
+  margin: 0 auto;
+  transition: all .35s ease-in-out;
+  &.main-btn-styles{
+    width: 200px;
+    height: 200px;
+
+    .action-btn-parent {
+      height: 200px;
+      border-radius: 300px;
+
+    }
+  }
+
+  &.main-add-btn-styles{
+    width: 350px;
+    height: 100px;
+
+    .action-btn-parent {
+      height: 100px;
+      border-radius: 8px;
+    }
+  }
+}
+
+
 
 //
 //.SECTION: main-content
@@ -256,8 +274,13 @@ h1, h2, h3 {
 
 
 //icon mic
-
-.icon{
+@keyframes scalingyoyo {
+    0%   {transform:scale(.65)}
+    50%  {transform:scale(.95)}
+    51%  {transform:scale(.95)}
+    100% {transform:scale(.65)}
+}
+.icons{
   position:absolute;
   top:0;
   left:0;
@@ -265,34 +288,40 @@ h1, h2, h3 {
   bottom:0;
   margin:auto;
   display:block;
+  animation: scalingyoyo 2s infinite;
 }
 
 /*THE ARTIFAKT ;) */
 .microphone{
-  width:2em;
-  height:6em;
-  background:#fff;
-  border-radius:1em;
+  width: 1em;
+  height: 5em;
+  background: #fff;
+  border-radius: 1em;
+  font-size: 6px;
+  padding: 7px;
+  position: absolute;
 }
+
 .microphone:before{
-  content:"";
-  position:absolute;
-  bottom:-1em;
-  left:-1em;
-  width:4em;
-  height:0.5em;
-  background:#fff;
+  content: "";
+  position: absolute;
+  bottom: -1em;
+  left: -1em;
+  width: 4em;
+  height: 0.5em;
+  background: #fff;
 }
+
 .microphone:after{
-  content:"";
-  position:absolute;
-  bottom:-0.5em;
-  left:-0.5em;
-  width:3em;
-  height:3em;
-  border:0.3em solid #fff;
-  border-top:0.3em solid #3dc0f1;
-  border-radius:0 0 1.5em 1.5em;
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  left: -0.5em;
+  width: 3em;
+  height: 3em;
+  border: 0.3em solid #fff;
+  border-top: 0.3em solid #3dc0f1;
+  border-radius: 0 0 1.5em 1.5em;
 }
 //.mic icon
 

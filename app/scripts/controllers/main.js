@@ -19,12 +19,15 @@ angular.module('abrickApp')
       },
       'main.add':{
         'masthead': 'What would you like to <span>name it?</span>'
-       
+
       }
     };
 
     //inits the changes it on state change
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-      $scope.currentState = $scope.contentList[$state.current.name];
+    //event, toState, toParams, fromState, fromParams
+    $scope.$on('$stateChangeSuccess', function(){
+      $scope.stateName = $state.current.name;
+      $scope.currentState = $scope.contentList[$scope.stateName];
+      
     });
   });

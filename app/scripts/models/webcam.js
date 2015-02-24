@@ -12,10 +12,10 @@ angular.module('abrickApp')
       Webcam.params.isOn = false;
       Webcam.params.getLocalStream().stop();
     };
-    Webcam.errorHandler = function(err){
+    Webcam.errorHandler = function(){
       Webcam.params.isOff = false;
       Webcam.params._stream = undefined;
-      alert("Please enable your webcam and use either Google or Firefox browsers");
+      console.log('Please enable your webcam and use either Google or Firefox browsers');
 
     };
     Webcam.params = {
