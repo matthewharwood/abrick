@@ -1,8 +1,11 @@
 <!-- anything typed in here is magically saved to Firebase! -->
-<input type="text" ng-model="data.text"/>
 <!-- all changes from Firebase magically appear here! -->
-<h1>You said: {{ data.text }}</h1>
+
+<section class="main-content">
+  <div class="action-btn-parent">
+    <button ng-click="takePic()" ui-sref="main.add" class="action-btn-child">+</button>
+  </div>
+</section>
 <video id="background-video" muted autoplay></video>
 <img id="captured-image" ng-src="{{data.capturedImage}}">
 <canvas id="capture-frame" style="display:none;"></canvas>
-<button id="capture-photo-btn" ng-click="takePic()">Capture Photo</button>

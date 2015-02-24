@@ -1,9 +1,31 @@
-<h1>heyhey</h1>
-this is main
+<nav class="primary-navigation">
+  <ul class="primary-navigation-list">
+    <li class="primary-navigation-item">
+      <h1 class="title-parent">
+        <a ui-sref="main">keystone</a>
+      </h1>
+    </li>
+    <li class="primary-navigation-item">
+      <div class="hamburger-parent">
+        <button class="hamburger-btn"> &#9776;</button>
+      </div>
+    </li>
+  </ul>
+</nav>
 
-
-
-
+<section class="main-header">
+  <header class="masthead-parent">
+    <h2 class="masthead-child" ng-bind-html="currentState.masthead"></h2>
+  </header>
+</section>
 
 <rtc-camera></rtc-camera>
 
+<footer class="main-footer">
+  <div class="secondary-cta-parent">
+    <h3 class="secondary-cta-child">
+      <span>we help you inventory every</span>
+      <span>object in your life</span>
+    </h3>
+  </div>
+</footer>
