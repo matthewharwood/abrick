@@ -9,26 +9,36 @@
  */
 angular.module('abrickApp')
 
-  .controller('MainCtrl', function ($scope,  $state) {
-
-
-    $scope.contentList =
-    {
-      'main': {
-        'masthead': 'let\'s create a <span>key</span> for your <span>new object</span>'
-      },
-      'main.add':{
-        'masthead': 'What would you like to <span>name it?</span>'
-
-      }
-    };
+  .controller('MainCtrl', function ($scope,  $state, AnnYang, Speech) {
+  var msg = undefined;
+  var name = undefined;
+    $scope.contentList = AnnYang.contentList;
     var addNewObject = function(val){
       console.log(val);
     };
+
     if (annyang) {
       // Let's define a command.
       var commands = {
-        'name me *val': function(val) { $scope.myName = 'my name is '+ val; $scope.$apply(); }
+        'hello': function(val){
+          var message = typeof name == "undefined" ? Speech.speak("hello"): Speech.speak("hello, I'm " + name);
+          if (!name){
+            Speech.speak("What is my name?");
+          }
+        },
+        'let\'s name you *val': function(val) {
+          name = val;
+          msg = "Ok, my name is " + name;
+          var q = "What gender am I?";
+          //var message = Speech.setMsg(msg);
+          Speech.speak(msg);
+          Speech.speak(q);
+        },
+        'your gender is *val': function(val){
+          Speech.setCurrentParams(val);
+          msg = Speech.speak('Ok good, I\'m now a ' + val);
+          Speech.speak(msg);
+        }
       };
 
       // Add our commands to annyang
@@ -42,6 +52,6 @@ angular.module('abrickApp')
     $scope.$on('$stateChangeSuccess', function(){
       $scope.stateName = $state.current.name;
       $scope.currentState = $scope.contentList[$scope.stateName];
-      
+
     });
   });

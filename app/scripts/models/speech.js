@@ -5,19 +5,12 @@ angular.module('abrickApp')
     var Speech = {};
     Speech.voices = [];
     Speech.messages = [];
-    Speech.init = function(){
-      Speech.voices = SpeechSynthesis.getVoices();
-    };
-    Speech.setMsg = function (msg, gender) {
-      if (!Speech.voices.length){
-        Speech.init();
-      }
+    Speech.setMsg = function (msg) {
       if (!SpeechSynthesisUtterance) {
         throw new Error("Speech Synthesis API not available");
       } else {
         var _msg = new SpeechSynthesisUtterance(msg);
-        _msg = Speech.setParams(_msg, gender);
-        Speech.messages.push({data: _msg, msg: msg, gender: gender, birthday: Date.now()});
+        Speech.messages.push({data: _msg, msg: msg, birthday: Date.now()});
         return _msg;
       }
     };
@@ -30,28 +23,42 @@ angular.module('abrickApp')
       }
       return arguments.length === 1 ? Speech.messages[start] : Speech.messages.slice(start, end);
     };
-    Speech.setParams = function(_msg, gender){
-      if (gender !== "male" || gender !== "female"){
-        throw new Error("gender not recognized, choose male or female");
-      }
-      for (var param in Speech.Speech[gender]){
-        if (_msg.hasOwnProperty(param)){
-          _msg[param] = Speech.Speech[gender][param]
+    Speech.setCurrentParams = function(gender){
+      for (var param in Speech.params[gender]){
+          Speech.currentParams[param] = Speech.params[gender][param]()
         }
-      }
-      return _msg;
     };
 
+    Speech.getCurrentParams = function(msg){
+      for (var param in Speech.currentParams){
+        console.log(Speech.currentParams[param])
+        msg[param] = Speech.currentParams[param];
+        console.log(msg);
+      }
+      console.log(msg);
+      console.log(Speech.currentParams);
+      return msg;
+    }
+
     Speech.speak = function (msg) {
-      SpeechSynthesis.speak(msg);
+      var msg = Speech.setMsg(msg);
+      if (Speech.currentParams){
+        msg = Speech.getCurrentParams(msg);
+      }
+      speechSynthesis.speak(msg);
     };
+    Speech.currentParams = {    };
 
     Speech.params = {
       male: {
-        voice: Speech.voices[1] //Google UK English Male
+        voice: function(){
+          return speechSynthesis.getVoices()[1];
+        }
       },
       female: {
-        voice: Speech.voices[2] //Google UK English Female
+        voice: function(){
+          return speechSynthesis.getVoices()[2]
+        }
       }
     };
     return Speech;
