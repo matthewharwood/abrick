@@ -110,6 +110,7 @@ h1 {
   background: none;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 //
 //end of helpers
@@ -174,6 +175,7 @@ h1, h2, h3 {
   line-height: 27px;
   span{
     font-weight: 700;
+    top: -3px;
   }
 }
 //
@@ -195,6 +197,7 @@ h1, h2, h3 {
   border-radius: 300px;
   text-align: center;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .action-btn-child{
@@ -206,6 +209,7 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   font-family: sans-serif;
+  cursor: pointer;
 }
 
 //
@@ -231,7 +235,7 @@ h1, h2, h3 {
   font-family: $sans;
   font-size: 16px;
   font-weight: 700;
-  color: lighten($off-gray,10%);
+  color: lighten($off-gray,15%);
   span {
     display: block;
   }
