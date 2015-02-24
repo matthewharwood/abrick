@@ -8,7 +8,7 @@
  * Controller of the abrickApp
  */
 angular.module('abrickApp')
-  .controller('MainCtrl', function ($scope, $firebase) {
+  .controller('MainCtrl', function ($scope, $firebase, $state) {
     // create an init reference to the db
     var ref = new Firebase('https://abrick.firebaseio.com/');
 
@@ -135,6 +135,21 @@ angular.module('abrickApp')
     }, errorCallback);
 
 
+    $scope.contentList = 
+    {
+      'main': {
+        'masthead': 'let\'s create a <span>key</span> for your <span>new object</span>'
+      },
+      'main.add':{
+        'masthead': 'What would you like to <span>name it?</span>'
+      }
+    };
+
+    //inits the changes it on state change
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+      $scope.currentState = $scope.contentList[$state.current.name];
+    });
     
+
 
   });

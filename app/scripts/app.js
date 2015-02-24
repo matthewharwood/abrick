@@ -30,4 +30,16 @@ angular
           templateUrl: 'views/main.html',
           controller: 'MainCtrl'
       });
+
+      $stateProvider
+        .state('main.add', {
+          url: 'add',
+          onEnter: function(){
+            
+          },
+          onLeave: function(){
+            
+          }
+      });
+
   });
