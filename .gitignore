@@ -3,3 +3,6 @@ dist
 .tmp
 .sass-cache
 bower_components
+.idea/abrick.iml
+.idea/jsLibraryMappings.xml
+.idea/libraries/abrick_node_modules.xml
