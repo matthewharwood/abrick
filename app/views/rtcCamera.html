@@ -1,0 +1,7 @@
+<!-- anything typed in here is magically saved to Firebase! -->
+<!-- all changes from Firebase magically appear here! -->
+
+
+<video id="background-video" muted autoplay ng-hide="$state.includes('main.add');"></video>
+<img id="captured-image" ng-src="{{data.capturedImage}}" ng-show="$state.includes('main.add');">
+<canvas id="capture-frame" style="display:none;"></canvas>

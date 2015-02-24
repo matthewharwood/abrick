@@ -1,3 +1,4 @@
+
 <nav class="primary-navigation">
   <ul class="primary-navigation-list">
     <li class="primary-navigation-item">
@@ -21,9 +22,10 @@
 
 <section class="main-content">
   <div class="action-btn-parent">
-    <button  class="action-btn-child">+</button>
+    <button ng-click="takePic()" ui-sref="main.add" class="action-btn-child">+</button>
   </div>
 </section>
+
 
 <footer class="main-footer">
   <div class="secondary-cta-parent">
@@ -33,13 +35,4 @@
     </h3>
   </div>
 </footer>
-
-<!-- firebase section -->
-<!-- <input type="text" ng-model="data.text"/> 
-     <h1>You said: {{ data.text }}</h1> -->
-<!-- .firebase section -->
-
-<video id="background-video" muted autoplay></video>
-<img src="">
-<canvas id="capture-frame" width="640" height="480" style="display:none;"></canvas>
-<button id="capture-photo-btn">Capture Photo</button>
+<rtc-camera class="rtc-camera"></rtc-camera>

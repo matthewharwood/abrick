@@ -1,0 +1,35 @@
+'use strict';
+
+angular.module('abrickApp')
+  .factory('Webcam', function(){
+
+    var Webcam = {};
+    Webcam.init = function(){
+      Webcam.params.isOn = true;
+      return navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    };
+    Webcam.stop = function(){
+      Webcam.params.isOn = false;
+      Webcam.params.getLocalStream().stop();
+    };
+    Webcam.errorHandler = function(err){
+      Webcam.params.isOff = false;
+      Webcam.params._stream = undefined;
+      alert("Please enable your webcam and use either Google or Firefox browsers");
+
+    };
+    Webcam.params = {
+      _stream: undefined,
+      isOn: false,
+      setLocalStream: function(stream){
+        this._stream = stream;
+      },
+      getLocalStream: function(){
+        return this._stream;
+      }
+    };
+    return Webcam;
+
+
+
+  });
